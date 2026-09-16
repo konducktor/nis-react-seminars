@@ -9,12 +9,34 @@
 export type Payment =
     | { kind: "card"; last4: string }
     | { kind: "cash"; amount: number }
-    | { kind: "transfer"; iban: string };
+    | { kind: "transfer"; iban: string }
+    | { kind: "crypto", wallet: number };
+
+function assertNever(value: never): never {
+    throw new Error("Необработанный вариант: " + JSON.stringify(value));
+}
 
 export function describePayment(payment: Payment): string {
-    throw new Error("не реализовано");
+    switch (payment.kind) {
+        case "card":
+            return `По карте: ${payment.last4}`;
+        case "cash":
+            return `Наличные: ${payment.amount}`;
+        case "transfer":
+            return `Перевод: ${payment.iban}`;
+        case "crypto":
+            return `Криптовалютой: ${payment.wallet}`;
+        default:
+            assertNever(payment);
+    }
 }
 
 export function total(payments: Payment[]): number {
-    throw new Error("не реализовано");
+    var out: number = 0;
+
+    payments.forEach(payment => {
+        if (payment.kind === "cash") out++;
+    });
+
+    return out;
 }
