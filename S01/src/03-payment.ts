@@ -35,7 +35,7 @@ export function total(payments: Payment[]): number {
     var out: number = 0;
 
     payments.forEach(payment => {
-        if (payment.kind === "cash") out++;
+        if (payment.kind === "cash") out+= payment.amount;
     });
 
     return out;
