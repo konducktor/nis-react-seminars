@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { Product } from "./data"
 
 interface ProductCardProps {
@@ -7,12 +8,13 @@ interface ProductCardProps {
     onRemove: (id: number) => void;
 }
 
-export default function ProductCard({ 
+function ProductCard({ 
     product,
     cartCount,
     onAdd,
     onRemove,
 }: ProductCardProps) {
+    console.log("render ProductCard")
     return (
         <>
             <h3>{product.title}</h3>
@@ -33,3 +35,5 @@ export default function ProductCard({
         </>
     )
 }
+
+export default memo(ProductCard);

@@ -1,4 +1,4 @@
-import { useState, useMemo, useReducer } from "react";
+import { useState, useMemo, useReducer, useCallback } from "react";
 import type { Product, CartItem, CartState, CartAction } from "./data";
 import { products } from "./data";
 import ProductList from "./ProductList";
@@ -57,6 +57,14 @@ export default function App() {
 
   const [cart, dispatch] = useReducer(cartReducer, initialCart);
 
+  const onAddStable = useCallback(
+    (product: Product) => dispatch({ type: "add", product: product }), []
+  );
+
+  const onRemoveStable = useCallback(
+    (id: number) => dispatch({ type: "remove", id: id }), []
+  );
+
   return (
     <>
       <Header
@@ -74,8 +82,8 @@ export default function App() {
       <ProductList 
         products={visible}
         cart={cart}
-        onAdd={(product: Product) => dispatch({ type: "add", product: product })}
-        onRemove={(id: number) => dispatch({ type: "remove", id: id })}
+        onAdd={onAddStable}
+        onRemove={onRemoveStable}
       />
     </>
   )
