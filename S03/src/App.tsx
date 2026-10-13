@@ -69,7 +69,7 @@ export default function App() {
     <>
       <Header
         count={cart.items.reduce((qty: number, item: CartItem) => qty + item.qty, 0)}
-        price={cart.items.reduce((price: number, item: CartItem) => price + item.price, 0)}
+        price={cart.items.reduce((price: number, item: CartItem) => price + item.price * item.qty, 0)}
         onClear={() => dispatch({ type: "clear" })}
       /><br/>
       <SearchBar
