@@ -2,16 +2,16 @@ import { useEffect, useRef } from "react";
 
 interface SearchBarProps {
   query: string;
-  setQuery: (value: string) => void;
+  handleSearch: (value: string) => void;
   onlyInStock: boolean;
-  setOnlyInStock: (value: boolean) => void;
+  handleStock: (value: boolean) => void;
 }
 
 export default function SearchBar({
     query,
-    setQuery,
+    handleSearch,
     onlyInStock,
-    setOnlyInStock
+    handleStock
 }: SearchBarProps) {
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
@@ -25,12 +25,12 @@ export default function SearchBar({
                 placeholder="Поиск по названию"
                 ref={inputRef}
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => handleSearch(e.target.value)}
             />
             <input 
                 type="checkbox"
                 checked={onlyInStock}
-                onChange={(e) => setOnlyInStock(e.target.checked)}
+                onChange={(e) => handleStock(e.target.checked)}
             />
             <label>Только в наличии</label>
         </>

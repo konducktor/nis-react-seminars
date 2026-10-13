@@ -1,16 +1,16 @@
-import type { CartState, Product } from "./data"
+import type { CartItem, Product } from "./data"
 import ProductCard from "./ProductCard";
 
 interface ProductListProps {
     products: Array<Product>
-    cart: CartState,
+    items: Array<CartItem>,
     onAdd: (product: Product) => void;
     onRemove: (id: number) => void;
 }
 
 export default function ProductList({ 
     products,
-    cart,
+    items,
     onAdd,
     onRemove
 }: ProductListProps) {
@@ -21,7 +21,7 @@ export default function ProductList({
                 <ProductCard
                     key={product.id}
                     product={product}
-                    cartCount={cart.items.find(item => item.id == product.id)?.qty ?? 0}
+                    cartCount={items.find(item => item.id == product.id)?.qty ?? 0}
                     onAdd={onAdd}
                     onRemove={onRemove}
                 />

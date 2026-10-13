@@ -14,7 +14,6 @@ function ProductCard({
     onAdd,
     onRemove,
 }: ProductCardProps) {
-    console.log("render ProductCard")
     return (
         <>
             <h3>{product.title}</h3>
@@ -36,4 +35,7 @@ function ProductCard({
     )
 }
 
-export default memo(ProductCard);
+export default memo((props: ProductCardProps) => {
+    console.log("render ProductCard")
+    return ProductCard(props);
+});
