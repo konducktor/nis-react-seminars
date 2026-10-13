@@ -1,17 +1,35 @@
 import type { Product } from "./data"
 
+interface ProductCardProps {
+    product: Product
+    cartCount: number
+    onAdd: (product: Product) => void;
+    onRemove: (id: number) => void;
+}
+
 export default function ProductCard({ 
-    // id, 
-    title, 
-    price, 
-    inStock 
-}: Omit<Product, "id">) {
+    product,
+    cartCount,
+    onAdd,
+    onRemove,
+}: ProductCardProps) {
     return (
         <>
-            <h3>{title}</h3>
-            <p>{price}</p>
-            <p>{inStock ? "В наличии" : "Нет в наличии"}</p>
-            <button>В корзину</button>
+            <h3>{product.title}</h3>
+            <p>{product.price}</p>
+            <p>{product.inStock ? "В наличии" : "Нет в наличии"}</p>
+            { cartCount === 0 ? (
+                <button 
+                    disabled={product.inStock === false}
+                    onClick={() => onAdd(product)}
+                >В корзину</button>
+            ) : (
+                <div>
+                    <button onClick={() => onAdd(product)}>В корзине: {cartCount}</button>
+                    <button onClick={() => onRemove(product.id)}>Убрать</button>
+                </div>
+            )
+            }
         </>
     )
 }
