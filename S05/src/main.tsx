@@ -1,6 +1,7 @@
 import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { TASKS } from './tasks/registry';
+import './tokens.css';
 
 // Навигация через query-параметры и полную перезагрузку страницы:
 // так на странице всегда стили только одного задания.

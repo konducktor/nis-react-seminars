@@ -12,10 +12,25 @@
 }
 
 // TODO 1. Миксин focus-ring($color): обводка при :focus-visible.
+@mixin focus-ring($color) {
+  :focus-visible {
+    outline: $color 1px;
+  }
+}
+
 // TODO 2. Миксин respond($bp): media-query по карте t.$breakpoints, с @content.
 //         Кнопка на мобильном — во всю ширину, начиная с sm — по содержимому.
+@mixin respond($bp) {
+  @media screen {
+    
+  }
+}
+
 // TODO 3. Карта $variants (primary, secondary, danger) → @each генерирует
 //         классы .primary/.secondary/.danger с фоном, цветом текста, рамкой
 //         и затемнением фона на :hover (модуль sass:color).
+
+
+
 // TODO 4. Карта $sizes (sm, md, lg) → @each генерирует .sm/.md/.lg (height, padding, font-size).
 // TODO 5. Состояние :disabled: прозрачность 0.5, курсор not-allowed, без hover.
