@@ -1,0 +1,31 @@
+/* Цвета «зашиты» — тёмную тему так не сделать без дублирования всех правил */
+.page {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f6f7f9;
+  color: #14161a;
+  font-family: system-ui, sans-serif;
+}
+
+.card {
+  max-width: 360px;
+  padding: 20px;
+  border: 1px solid #d9dde3;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.muted {
+  color: #5b6270;
+}
+
+.button {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #3b5bdb;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}

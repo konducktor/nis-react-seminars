@@ -1,0 +1,14 @@
+/* Другой разработчик, другой компонент — те же имена классов */
+.card {
+  padding: 16px;
+  border: 2px dashed #e8590c;
+  border-radius: 12px;
+  background: #fff4e6;
+}
+
+.title {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: crimson;
+}
