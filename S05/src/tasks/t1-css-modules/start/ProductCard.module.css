@@ -1,11 +1,10 @@
 .card {
-  padding: 16px;
+  composes: base from './card-base.module.css';
   border: 1px solid #d9dde3;
-  border-radius: 12px;
   background: #fff;
 }
 
-.card.active {
+.active {
   border-color: #3b5bdb;
   box-shadow: 0 0 0 3px rgb(59 91 219 / 20%);
 }
