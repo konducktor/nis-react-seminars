@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import type { User } from "../types";
+import { login } from "../api/authApi";
+import { handleError } from "../helpers/handleError"
 
 type Props = {
   onLogin: (token: string, user: User) => void;
@@ -12,11 +14,21 @@ export function LoginPage({ onLogin }: Props) {
   const [error, setError] = useState<string>("");
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
     // TODO: вызвать authApi.login с телефоном и паролем
     // TODO: при успехе сохранить токен через authStorage.setToken и вызвать onLogin(token, user)
     // TODO: показать сообщение об ошибке через handleError при неуспехе
     // TODO: выставлять флаги loading/error
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await login({ phone, password });
+
+      response
+    } catch (error) {
+      setError(handleError(error));
+    }
   };
 
   return (

@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { User } from "../types";
 
 const API_URL = import.meta.env?.VITE_API_URL || "http://localhost:3001";
@@ -11,7 +12,12 @@ function authHeaders(token: string) {
 
 export async function getProfile(token: string): Promise<User> {
   // TODO: запросить GET /users/me (Fetch) с заголовком Authorization Bearer <token>, вернуть профиль
-  return Promise.reject(new Error("Not implemented"));
+  const response = await fetch(`${API_URL}/users/me`, {
+    headers: authHeaders(token)
+  });
+  if (!response.ok) throw new Error(`Error with GET: ${response.status}`);
+
+  return response.json();
 }
 
 export type UpdateProfilePayload = Partial<Pick<User, "nickname" | "bio">>;
