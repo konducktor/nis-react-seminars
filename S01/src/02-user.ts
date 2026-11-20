@@ -17,5 +17,24 @@ export type User = {
 };
 
 export function describeUser(user: User): string {
-    throw new Error("не реализовано");
+    var out: string = "User:\n";
+
+    out += `\tName: ${user.name}\n`;
+    if (user.age !== undefined) out += `\tAge: ${user.age}\n`;
+
+    if (user.hobbies.length == 0) out += `\tNo hobbies\n`;
+    else {
+        out += `\tHobbies:\n`;
+        user.hobbies.forEach(hobby => {
+            out += `\t\t${hobby}\n`;
+        });
+    }
+
+    if ("email" in user.contact) {
+        out += `\tEmail: ${user.contact.email}`;
+    } else if ("phone" in user.contact) {
+        out += `\tPhone: ${user.contact.phone}`;
+    }
+
+    return out;
 }

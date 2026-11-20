@@ -30,5 +30,15 @@ export const defaultRules: Rules = {
 };
 
 export function validateForm(data: IFormData, rules: Rules): Errors {
-    throw new Error("не реализовано");
+    var out: Errors = {};
+
+    if (!rules.username(data.username)) out.username = "Ошибка в username";
+    if (!rules.email(data.email)) out.email = "Ошибка в email";
+    if (!rules.age(data.age)) out.age = "Ошибка в age";
+
+    // P.S. Должен быть способ как-то проходиться по ключам,
+    // но Object.keys не работает, он возвращает string[]. 
+    // Преобразования тоже не нашёл
+
+    return out;
 }
